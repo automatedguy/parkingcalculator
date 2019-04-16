@@ -1,4 +1,4 @@
-package utilities;
+package providers;
 
 public class TestData {
 

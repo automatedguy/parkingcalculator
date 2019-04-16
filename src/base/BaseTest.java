@@ -13,9 +13,10 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.log4testng.Logger;
 import pages.CalendarPage;
 import pages.ParkingPage;
-import utilities.TestData;
+import providers.TestData;
 
 import static base.Constants.BASE_URL;
+import static base.Constants.FINAL_COST;
 import static base.Constants.RESOURCES_PATH;
 
 
@@ -79,14 +80,43 @@ public class BaseTest {
         logger.info("Leaving Time: [" + testData.getLeavingTime() + "]");
         logger.info("Leaving Date: [" + testData.getLeavingDate() + "]");
         logger.info("Leaving Period: [" + testData.getLeavingPeriod() + "]");
-        logger.info("===== [Starting Execution]  =====");
+        logger.info("======= [Starting Test Execution]  =======");
+    }
+
+    protected String getExpectedCost(int costFirstDay, int costPerDay){
+        String totalTime = parkingPage.labelParkingPermanence.getText();
+        String totalDays = totalTime.substring(totalTime.indexOf("(") + 1, totalTime.indexOf(" Days,"));
+        String expectedCost = Integer.toString(((Integer.valueOf(totalDays) - 1) * costPerDay) + costFirstDay);
+        logger.info("Expected Cost: [" + expectedCost+ "]");
+        return expectedCost;
+    }
+
+    protected String calculateCost(TestData testData){
+
+        parkingPage.fillEntryTime(testData.getEntryTime());
+        parkingPage.clickOnEntryPeriod(testData.getEntryPeriod());
+        calendarPage = parkingPage.clickOnEntryCalendar();
+        calendarPage.selectMonthDate(testData.getEntryDate());
+
+
+        parkingPage.fillLeavingTime(testData.getLeavingTime());
+        parkingPage.clickOnLeavingPeriod(testData.getLeavingPeriod());
+        calendarPage = parkingPage.clickOnLeavingCalendar();
+        int leavingDate = Integer.parseInt(testData.getEntryDate()) + Integer.parseInt(testData.getLeavingDate());
+        calendarPage.selectMonthDate(Integer.toString(leavingDate));
+
+        parkingPage.clickOnCalculateButton();
+
+        String cost = parkingPage.getFinalCost();
+        logger.info(FINAL_COST + ": [" + cost + "]");
+        return cost.replace("$ ", "").replace(".00", "");
     }
 
     //================================================================================
     // Inits
     //================================================================================
 
-    protected ParkingPage initParkingPage(){
+    private ParkingPage initParkingPage(){
         return PageFactory.initElements(driver, ParkingPage.class);
     }
 

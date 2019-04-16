@@ -47,8 +47,8 @@ public class ParkingPage extends BasePage {
     @FindBy(xpath = "//span[@class='SubHead']//b[contains(text(),'$')]")
     private WebElement labelParkingCost;
 
-    @FindBy(xpath = "")
-    private WebElement labelParkingPermanence;
+    @FindBy(xpath = "//span[@class='BodyCopy']//b")
+    public WebElement labelParkingPermanence;
 
     private String rdbEntryPeriod = "//input[@name='EntryTimeAMPM' and @value='_PERIOD_']";
     private String rdbEntryPeriodCatption = "Entry Period";

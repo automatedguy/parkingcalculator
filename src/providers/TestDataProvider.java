@@ -1,4 +1,4 @@
-package utilities;
+package providers;
 
 
 import org.testng.ITestContext;
