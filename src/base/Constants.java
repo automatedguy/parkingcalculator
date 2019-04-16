@@ -4,6 +4,9 @@ public class Constants {
 
     public static final String BASE_URL = "http://adam.goucher.ca/parkcalc/";
     public static final String RESOURCES_PATH = "src/resources/";
+    public static final String TEST_DATA_CSV = "test_data.csv";
+    public static final String CHROMEDRIVER = "chromedriver";
+    public static final String CHROMEDRIVER_EXE = "chromedriver.exe";
 
     public static final String SHORT_TERM = "Short-Term Parking";
     public static final String ECONOMY = "Economy Parking";
