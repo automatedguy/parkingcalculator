@@ -13,35 +13,35 @@ public class ParkingTests extends BaseTest {
     CalendarPage calendarPage = null;
 
     @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
-    public void ShortTermParking(TestData testData){
+    public void shortTermParking(TestData testData){
         displayTestParameters(SHORT_TERM, testData);
         parkingPage.selectParkingLot(SHORT_TERM);
         calculateCost(testData);
     }
 
     @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
-    public void EconomyParking(TestData testData){
+    public void economyParking(TestData testData){
         displayTestParameters(ECONOMY, testData);
         parkingPage.selectParkingLot(ECONOMY);
         calculateCost(testData);
     }
 
     @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
-    public void LongTermSurfaceParking(TestData testData){
+    public void longTermSurfaceParking(TestData testData){
         displayTestParameters(LONG_TERM_SURFACE, testData);
         parkingPage.selectParkingLot(LONG_TERM_SURFACE);
         calculateCost(testData);
     }
 
     @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
-    public void LongTermGarageParking(TestData testData){
+    public void longTermGarageParking(TestData testData){
         displayTestParameters(LONG_TERM_GARAGE, testData);
         parkingPage.selectParkingLot(LONG_TERM_GARAGE);
         calculateCost(testData);
     }
 
     @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
-    public void ValetParking(TestData testData){
+    public void valetParking(TestData testData){
         displayTestParameters(VALET, testData);
         parkingPage.selectParkingLot(VALET);
         calculateCost(testData);
