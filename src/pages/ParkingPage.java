@@ -114,4 +114,8 @@ public class ParkingPage extends BasePage {
         elementCaption = "Calculate";
         clickElement();
     }
+
+    public String getFinalCost(){
+        return labelParkingCost.getText();
+    }
 }

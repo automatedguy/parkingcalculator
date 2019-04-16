@@ -2,15 +2,12 @@ package tests;
 
 import base.BaseTest;
 import org.testng.annotations.Test;
-import pages.CalendarPage;
 import utilities.TestData;
 import utilities.TestDataProvider;
 
 import static base.Constants.*;
 
 public class ParkingTests extends BaseTest {
-
-    CalendarPage calendarPage = null;
 
     @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
     public void shortTermParking(TestData testData){
@@ -24,6 +21,7 @@ public class ParkingTests extends BaseTest {
         displayTestParameters(ECONOMY, testData);
         parkingPage.selectParkingLot(ECONOMY);
         calculateCost(testData);
+
     }
 
     @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
@@ -47,7 +45,7 @@ public class ParkingTests extends BaseTest {
         calculateCost(testData);
     }
 
-    private void calculateCost(TestData testData){
+    private String calculateCost(TestData testData){
 
         parkingPage.fillEntryTime(testData.getEntryTime());
         parkingPage.clickOnEntryPeriod(testData.getEntryPeriod());
@@ -63,5 +61,8 @@ public class ParkingTests extends BaseTest {
 
         parkingPage.clickOnCalculateButton();
 
+        String cost = parkingPage.getFinalCost();
+        logger.info(FINAL_COST + ": [" + cost + "]");
+        return cost;
     }
 }

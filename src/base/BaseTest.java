@@ -23,8 +23,9 @@ public class BaseTest {
 
     private WebDriver driver;
     private ChromeOptions chromeOptions;
-    public static Logger logger = Logger.getLogger(BaseTest.class);
-    public ParkingPage parkingPage = null;
+    protected static Logger logger = Logger.getLogger(BaseTest.class);
+    protected ParkingPage parkingPage = null;
+    protected CalendarPage calendarPage = null;
 
 
     @BeforeSuite(alwaysRun = true)
@@ -65,7 +66,7 @@ public class BaseTest {
 
     protected void displayTestTitle(String title){
         logger.info("====================================================");
-        logger.info("===== Starting: [" + title + "] ===== test");
+        logger.info("===== Starting: [" + title + "] test =====");
         logger.info("====================================================");
     }
 
