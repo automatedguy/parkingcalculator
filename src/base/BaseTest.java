@@ -65,19 +65,21 @@ public class BaseTest {
     }
 
     protected void displayTestTitle(String title){
-        logger.info("====================================================");
-        logger.info("===== Starting: [" + title + "] test =====");
-        logger.info("====================================================");
+        logger.info("====================================");
+        logger.info("[" + title + "]");
+        logger.info("====================================");
     }
 
     protected void displayTestParameters(String testTitle, TestData testData){
         displayTestTitle(testTitle);
+        logger.info("[Test Parameters]");
         logger.info("Entry Time: [" + testData.getEntryTime() + "]");
         logger.info("Entry Date: [" + testData.getEntryDate() + "]");
         logger.info("Entry Period: [" + testData.getEntryPeriod() + "]");
         logger.info("Leaving Time: [" + testData.getLeavingTime() + "]");
         logger.info("Leaving Date: [" + testData.getLeavingDate() + "]");
         logger.info("Leaving Period: [" + testData.getLeavingPeriod() + "]");
+        logger.info("===== [Starting Execution]  =====");
     }
 
     //================================================================================

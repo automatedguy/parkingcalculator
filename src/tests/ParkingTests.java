@@ -16,7 +16,14 @@ public class ParkingTests extends BaseTest {
         calculateCost(testData);
     }
 
-/*    @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
+    @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
+    public void longTermGarageParking(TestData testData){
+        displayTestParameters(LONG_TERM_GARAGE, testData);
+        parkingPage.selectParkingLot(LONG_TERM_GARAGE);
+        calculateCost(testData);
+    }
+
+    @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
     public void economyParking(TestData testData){
         displayTestParameters(ECONOMY, testData);
         parkingPage.selectParkingLot(ECONOMY);
@@ -31,18 +38,11 @@ public class ParkingTests extends BaseTest {
     }
 
     @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
-    public void longTermGarageParking(TestData testData){
-        displayTestParameters(LONG_TERM_GARAGE, testData);
-        parkingPage.selectParkingLot(LONG_TERM_GARAGE);
-        calculateCost(testData);
-    }
-
-    @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
     public void valetParking(TestData testData){
         displayTestParameters(VALET, testData);
         parkingPage.selectParkingLot(VALET);
         calculateCost(testData);
-    }*/
+    }
 
     private String calculateCost(TestData testData){
 
