@@ -9,22 +9,22 @@
 
 ## Project Structure
 
--base:
-	- BasePage: base page class
-	- BaseTest: base test setup class
--pages (BasePage subclasses):
-	- CalendarPage
-	- ParkingPage
--tests:
-	- ParkingTests
--providers:
-    - Data provider classes
--utilities:
-    - Class that handles date generation based on days ranges
--resources:
-	- chromedriver (latest chrome driver version up to date)
-	- test_data.csv
-	- log4testng.properties (testng logger config)
+base:
+    BasePage: base page class
+	BaseTest: base test setup class
+pages (BasePage subclasses):
+	CalendarPage
+	ParkingPage
+tests:
+	ParkingTests
+providers:
+    Data provider classes
+utilities:
+    Class that handles date generation based on days ranges
+resources:
+	chromedriver (latest chrome driver version up to date)
+	test_data.csv
+	log4testng.properties (testng logger config)
 
 ## "How to run" instructions
 
@@ -36,6 +36,12 @@ a). From IDE (Intellij suggested):
 		-Source        : ./parkingcalculator/src
 		-Tests         : ./parkingcalculator/src/tests
 		-Test Resources: ./parkingcalculator/src/resources
+		
+## Note
+
+This demo was created with Linux, in order to run from Windows please use "chromedriver.exe" (instead of "chromedriver") modify the following line in BaseTest.java
+
+``` System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver"); ```
 
 ## License
 
