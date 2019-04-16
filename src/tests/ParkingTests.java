@@ -10,34 +10,33 @@ import static base.Constants.*;
 public class ParkingTests extends BaseTest {
 
     @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
-    public void ShortTermParking(String a, String b, String c, String d, String e, String f){
+    public void ShortTermParking(TestData testData){
         logger.info("Starting Short-Term Parking Tests");
         parkingPage.selectParkingLot(SHORT_TERM);
     }
 
-/*    @Test(dataProvider = "TestDataProvider")
-    public void EconomyParking(){
+    @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
+    public void EconomyParking(TestData testData){
         logger.info("Starting Economy Parking Tests");
         parkingPage.selectParkingLot(ECONOMY);
     }
 
-    @Test(dataProvider = "TestDataProvider")
-    public void LongTermSurfaceParking(){
+    @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
+    public void LongTermSurfaceParking(TestData testData){
         logger.info("Starting Long Term Surface Parking Tests");
         parkingPage.selectParkingLot(LONG_TERM_SURFACE);
     }
 
-    @Test(dataProvider = "TestDataProvider")
-    public void LongTermGarageParking(){
+    @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
+    public void LongTermGarageParking(TestData testData){
         logger.info("Starting Long Term Garage Parking Tests");
         parkingPage.selectParkingLot(LONG_TERM_GARAGE);
     }
 
-    @Test(dataProvider = "TestDataProvider")
-    public void ValetParking(){
+    @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
+    public void ValetParking(TestData testData){
         logger.info("Starting Valet Parking Tests");
         parkingPage.selectParkingLot(VALET);
-    }*/
-
+    }
 
 }

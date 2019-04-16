@@ -1,11 +1,12 @@
 package pages;
 
 import base.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static base.Constants.SELECT;
+import static base.Constants.*;
 
 public class ParkingPage extends BasePage {
 
@@ -37,7 +38,10 @@ public class ParkingPage extends BasePage {
     private WebElement rdbLeavingPeriod;
 
     @FindBy(xpath = "//input[@name='ExitDateDate']/following-sibling::a")
-    private WebElement calLeavingDate;
+    private WebElement imgLeavingDate;
+
+    @FindBy(name = "Submit")
+    private WebElement buttonCalculate;
 
     @FindBy(xpath = "//span[@class='SubHead']//b[contains(text(),'$')]")
     private WebElement labelParkingCost;
@@ -57,31 +61,54 @@ public class ParkingPage extends BasePage {
         selectOption();
     }
 
-    public void fillEntryTime(){
-
+    public void fillEntryTime(String entryTime){
+        element = inputEntryTime;
+        elementType = INPUT;
+        elementCaption = "Entry Time";
+        inputText = entryTime;
+        fillInput();
     }
 
-    public void clickOnEntryPeriod(){
-
+    public void clickOnEntryPeriod(String entryPeriod){
+        element = rdbEntryPeriod.findElement(By.xpath("//input[@value='"+ entryPeriod +"']"));
+        elementType = RADIO;
+        elementCaption = entryPeriod;
+        clickElement();
     }
 
     public void clickOnEntryCalendar(){
-
+        element = imgEntryDate;
+        elementType = IMAGE;
+        elementCaption = "Entry Calendar";
+        clickElement();
     }
 
-    public void fillLeavingTime(){
-
+    public void fillLeavingTime(String leavingTime){
+        element = inputLeavingTime;
+        elementType = INPUT;
+        elementCaption = "Leaving Time";
+        inputText = leavingTime;
+        fillInput();
     }
 
-    public void clickOnLeavingPeriod(){
-
+    public void clickOnLeavingPeriod(String leavingPeriod){
+        element = rdbLeavingPeriod.findElement(By.xpath("//input[@value='"+ leavingPeriod +"']"));
+        elementType = RADIO;
+        elementCaption = leavingPeriod;
+        clickElement();
     }
 
     public void clickOnLeavingCalendar(){
-
+        element = imgLeavingDate;
+        elementType = IMAGE;
+        elementCaption = "Leaving Calendar";
+        clickElement();
     }
 
-    public void clickOnCalculateButton(){
-
+    public CalendarPage clickOnCalculateButton(){
+        element = buttonCalculate;
+        elementType = BUTTON;
+        elementCaption = "Calculate";
+        return initCalendarPage();
     }
 }

@@ -20,4 +20,6 @@ public class Constants {
     public static final String RADIO = "Radio Button";
     public static final String IMAGE = "Image";
 
+    public static final String COMMA_DELIMITER = ",";
+    public static final String ERROR_READ = "Error occured while closing the BufferedReader";
 }

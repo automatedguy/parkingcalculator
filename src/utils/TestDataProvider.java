@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import static base.Constants.COMMA_DELIMITER;
+import static base.Constants.ERROR_READ;
 import static base.Constants.RESOURCES_PATH;
 import static base.Constants.TEST_DATA_CSV;
 
 public class TestDataProvider {
-
-    private static final String COMMA_DELIMITER = ",";
 
     @DataProvider(name = "TestDataProvider")
     public static Object[][] getTestData(ITestContext context) {
@@ -55,7 +55,7 @@ public class TestDataProvider {
             try {
                 br.close();
             } catch (IOException ie) {
-                System.out.println("Error occured while closing the BufferedReader");
+                System.out.println(ERROR_READ);
                 ie.printStackTrace();
             }
         }

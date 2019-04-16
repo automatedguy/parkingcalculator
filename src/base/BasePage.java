@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.log4testng.Logger;
 
-public class BasePage {
+public class BasePage extends BaseTest {
 
 
     protected WebDriver driver;
@@ -17,16 +17,19 @@ public class BasePage {
     protected String elementType;
     protected String elementCaption;
     protected String selectedOption;
+    protected String inputText;
 
     protected static Logger logger = Logger.getLogger(BasePage.class);
 
 
     protected void clickElement(){
-
+        logger.info("Clicking on: [" + elementType + "]" + " [" + elementCaption + "]");
+        element.click();
     }
 
     protected void fillInput(){
-
+        logger.info("Entering Text: [" + inputText + "] into [" + elementCaption + "]");
+        element.sendKeys(inputText);
     }
 
     protected void selectOption(){
