@@ -22,15 +22,16 @@ public class CalendarPage extends BasePage {
     // Locators
     //==============================================================================
 
-    String ddlMonthSelector = "MonthSelector";
-    String aSelectedDate = "//a[text()='_SELECTED_DATE_']";
+    private String ddlMonthSelector = "MonthSelector";
+    private String ddlMonthSelectorCaption = "Calendar";
+    private String aSelectedDate = "//a[text()='_SELECTED_DATE_']";
 
     //================================================================================
     // Actions
     //================================================================================
 
 
-    public void selectMonth(String selectedMonth){
+    public void selectMonth(String selectedMonth, String selectedDate){
         winHandleBefore = driver.getWindowHandle();
 
         for(String winHandle : driver.getWindowHandles()){
@@ -39,13 +40,10 @@ public class CalendarPage extends BasePage {
 
         element = driver.findElement(By.name(ddlMonthSelector));
         elementType = SELECT;
-        elementCaption = selectedMonth;
+        elementCaption = ddlMonthSelectorCaption;
         selectedOption = selectedMonth;
         selectOption();
 
-    }
-
-    public void clickOnDate(String selectedDate){
         logger.info("Selecting date: [" + selectedDate + "]");
         driver.findElement(By.xpath("//a[text()='" + selectedDate +"']")).click();
         driver.switchTo().window(winHandleBefore);

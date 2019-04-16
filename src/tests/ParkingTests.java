@@ -16,12 +16,11 @@ public class ParkingTests extends BaseTest {
         calculateCost(testData);
     }
 
-    @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
+/*    @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
     public void economyParking(TestData testData){
         displayTestParameters(ECONOMY, testData);
         parkingPage.selectParkingLot(ECONOMY);
         calculateCost(testData);
-
     }
 
     @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class)
@@ -43,21 +42,20 @@ public class ParkingTests extends BaseTest {
         displayTestParameters(VALET, testData);
         parkingPage.selectParkingLot(VALET);
         calculateCost(testData);
-    }
+    }*/
 
     private String calculateCost(TestData testData){
 
         parkingPage.fillEntryTime(testData.getEntryTime());
         parkingPage.clickOnEntryPeriod(testData.getEntryPeriod());
         calendarPage = parkingPage.clickOnEntryCalendar();
-        calendarPage.selectMonth("May");
-        calendarPage.clickOnDate("20");
+        calendarPage.selectMonth("May", "20");
+
 
         parkingPage.fillLeavingTime(testData.getLeavingTime());
         parkingPage.clickOnLeavingPeriod(testData.getLeavingPeriod());
         calendarPage = parkingPage.clickOnLeavingCalendar();
-        calendarPage.selectMonth("June");
-        calendarPage.clickOnDate("20");
+        calendarPage.selectMonth("June", "20");
 
         parkingPage.clickOnCalculateButton();
 

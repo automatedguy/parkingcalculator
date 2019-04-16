@@ -22,27 +22,27 @@ public class ParkingPage extends BasePage {
 
     @FindBy(name = "Lot")
     private WebElement ddlChooseLot;
+    private String ddlChooseLotCaption = "Choose a Lot";
 
     @FindBy(name = "EntryTime")
     private WebElement inputEntryTime;
-
-    @FindBy(name = "EntryTimeAMPM")
-    private WebElement rdbEntryPeriod;
-
-    @FindBy(xpath = "//input[@name='EntryDate']/following-sibling::a")
-    private WebElement imgEntryDate;
+    private String inputEntryTimeCaption = "Entry Time";
 
     @FindBy(name = "ExitTime")
     private WebElement inputLeavingTime;
+    private String inputLeavingTimeCaption = "Leaving Time";
 
-    @FindBy(name = "ExitTimeAMPM")
-    private WebElement rdbLeavingPeriod;
+    @FindBy(xpath = "//input[@name='EntryDate']/following-sibling::a")
+    private WebElement imgEntryDate;
+    private String imgEntryDateCaption = "Entry Calendar";
 
     @FindBy(xpath = "//input[@name='ExitDate']/following-sibling::a")
     private WebElement imgLeavingDate;
+    private String imgLeavingDateCaption = "Leaving Calendar";
 
     @FindBy(name = "Submit")
     private WebElement buttonCalculate;
+    private String buttonCalculateCaption = "Calculate";
 
     @FindBy(xpath = "//span[@class='SubHead']//b[contains(text(),'$')]")
     private WebElement labelParkingCost;
@@ -50,68 +50,74 @@ public class ParkingPage extends BasePage {
     @FindBy(xpath = "")
     private WebElement labelParkingPermanence;
 
+    private String rdbEntryPeriod = "//input[@name='EntryTimeAMPM' and @value='_PERIOD_']";
+    private String rdbEntryPeriodCatption = "Entry Period";
+
+    private String rdbLeavingPeriod = "//input[@name='ExitTimeAMPM' and @value='_PERIOD_']";
+    private String rdbLeavingPeriodCatption = "Leaving Period";
+
     //================================================================================
     // Actions
     //================================================================================
 
     public void selectParkingLot(String option){
+        elementCaption = ddlChooseLotCaption;
         element = ddlChooseLot;
-        elementType = SELECT;
-        elementCaption = "Choose a Lot";
         selectedOption = option;
+        elementType = SELECT;
         selectOption();
     }
 
     public void fillEntryTime(String entryTime){
+        elementCaption = inputEntryTimeCaption;
         element = inputEntryTime;
-        elementType = INPUT;
-        elementCaption = "Entry Time";
         inputText = entryTime;
+        elementType = INPUT;
         fillInput();
     }
 
-    public void clickOnEntryPeriod(String entryPeriod){
-        element = rdbEntryPeriod.findElement(By.xpath("//*[@value='"+ entryPeriod +"']"));
-        elementType = RADIO;
-        elementCaption = entryPeriod;
-        clickElement();
-    }
-
-    public CalendarPage clickOnEntryCalendar(){
-        element = imgEntryDate;
-        elementType = IMAGE;
-        elementCaption = "Entry Calendar";
-        clickElement();
-        return initCalendarPage(driver);
-    }
-
     public void fillLeavingTime(String leavingTime){
+        elementCaption = inputLeavingTimeCaption;
         element = inputLeavingTime;
         elementType = INPUT;
-        elementCaption = "Leaving Time";
         inputText = leavingTime;
         fillInput();
     }
 
-    public void clickOnLeavingPeriod(String leavingPeriod){
-        element = rdbLeavingPeriod.findElement(By.xpath("//*[@value='"+ leavingPeriod +"']"));
-        elementType = RADIO;
-        elementCaption = leavingPeriod;
+    public CalendarPage clickOnEntryCalendar(){
+        elementCaption = imgEntryDateCaption;
+        element = imgEntryDate;
+        elementType = IMAGE;
         clickElement();
+        return initCalendarPage(driver);
     }
 
     public CalendarPage clickOnLeavingCalendar(){
+        elementCaption = imgLeavingDateCaption;
         element = imgLeavingDate;
         elementType = IMAGE;
-        elementCaption = "Leaving Calendar";
         clickElement();
         return initCalendarPage(driver);
     }
 
     public void clickOnCalculateButton(){
+        elementCaption = buttonCalculateCaption;
         element = buttonCalculate;
         elementType = BUTTON;
-        elementCaption = "Calculate";
+        clickElement();
+    }
+
+    public void clickOnEntryPeriod(String entryPeriod){
+        element = driver.findElement(By.xpath(rdbEntryPeriod.replace(PERIOD, entryPeriod)));
+        elementCaption = rdbEntryPeriodCatption + " " + entryPeriod;
+        elementType = RADIO;
+        clickElement();
+    }
+
+    public void clickOnLeavingPeriod(String leavingPeriod){
+        element = driver.findElement(By.xpath(rdbLeavingPeriod.replace(PERIOD,leavingPeriod)));
+        elementCaption = rdbLeavingPeriodCatption + " " + leavingPeriod;
+        elementType = RADIO;
         clickElement();
     }
 

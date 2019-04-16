@@ -24,4 +24,5 @@ public class Constants {
     public static final String ERROR_READ = "Error occured while closing the BufferedReader";
 
     public static final String FINAL_COST = "Final cost";
+    public static final String PERIOD = "_PERIOD_";
 }
