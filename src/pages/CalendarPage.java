@@ -1,9 +1,12 @@
 package pages;
 
 import base.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import static base.Constants.SELECT;
 
 
 public class CalendarPage extends BasePage {
@@ -17,11 +20,8 @@ public class CalendarPage extends BasePage {
     // Locators
     //================================================================================
 
-    @FindBy(id = "")
+    @FindBy(name = "MonthSelector")
     private WebElement ddlMonth;
-
-    @FindBy(id = "")
-    private WebElement aDate;
 
 
     //================================================================================
@@ -29,11 +29,18 @@ public class CalendarPage extends BasePage {
     //================================================================================
 
 
-    public void selectMonth(){
+    public void selectMonth(String selectedMonth){
+        element = ddlMonth;
+        elementType = SELECT;
+        elementCaption = selectedMonth;
+        selectedOption = selectedMonth;
+        selectOption();
 
     }
 
-    public void clickOnDate(){
-
+    public void clickOnDate(String selectedDate){
+        logger.info("Selecting date: [" + selectedDate + "]");
+        driver.findElement(By.xpath("//a[text()='" + selectedDate +"']")).click();
+        focusParent();
     }
 }

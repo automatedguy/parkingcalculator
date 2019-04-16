@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.log4testng.Logger;
 
+import java.util.Iterator;
+import java.util.Set;
+
 public class BasePage extends BaseTest {
 
 
@@ -21,6 +24,8 @@ public class BasePage extends BaseTest {
 
     protected static Logger logger = Logger.getLogger(BasePage.class);
 
+    String parentWindowHandler = null;
+
 
     protected void clickElement(){
         logger.info("Clicking on: [" + elementType + "]" + " [" + elementCaption + "]");
@@ -29,6 +34,7 @@ public class BasePage extends BaseTest {
 
     protected void fillInput(){
         logger.info("Entering Text: [" + inputText + "] into [" + elementCaption + "]");
+        element.clear();
         element.sendKeys(inputText);
     }
 
@@ -38,4 +44,19 @@ public class BasePage extends BaseTest {
         dropdown.selectByVisibleText(String.valueOf(selectedOption));
     }
 
+    protected void focusPopUp(){
+        parentWindowHandler = driver.getWindowHandle(); // Store your parent window
+        String subWindowHandler = null;
+
+        Set<String> handles = driver.getWindowHandles(); // get all window handles
+        Iterator<String> iterator = handles.iterator();
+        while (iterator.hasNext()){
+            subWindowHandler = iterator.next();
+        }
+        driver.switchTo().window(subWindowHandler);
+    }
+
+    protected void focusParent(){
+        driver.switchTo().window(parentWindowHandler);
+    }
 }

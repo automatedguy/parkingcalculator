@@ -42,13 +42,6 @@ public class TestDataProvider {
                     testDataList.add(testData);
                 }
             }
-
-            for(TestData td: testDataList){
-                System.out.println(
-                                td.getEntryDate() + "    " + td.getEntryTime() + "   " + td.getEntryPeriod() + "    " +
-                                td.getLeavingDate() + "    " + td.getLeavingTime() + "   " + td.getLeavingPeriod());
-            }
-
         } catch (Exception ee) {
             ee.printStackTrace();
         } finally {

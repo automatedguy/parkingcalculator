@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+
 import static base.Constants.*;
 
 public class ParkingPage extends BasePage {
@@ -70,17 +71,19 @@ public class ParkingPage extends BasePage {
     }
 
     public void clickOnEntryPeriod(String entryPeriod){
-        element = rdbEntryPeriod.findElement(By.xpath("//input[@value='"+ entryPeriod +"']"));
+        element = rdbEntryPeriod.findElement(By.xpath("//*[@value='"+ entryPeriod +"']"));
         elementType = RADIO;
         elementCaption = entryPeriod;
         clickElement();
     }
 
-    public void clickOnEntryCalendar(){
+    public CalendarPage clickOnEntryCalendar(){
         element = imgEntryDate;
         elementType = IMAGE;
         elementCaption = "Entry Calendar";
         clickElement();
+        focusPopUp();
+        return initCalendarPage();
     }
 
     public void fillLeavingTime(String leavingTime){
@@ -92,23 +95,25 @@ public class ParkingPage extends BasePage {
     }
 
     public void clickOnLeavingPeriod(String leavingPeriod){
-        element = rdbLeavingPeriod.findElement(By.xpath("//input[@value='"+ leavingPeriod +"']"));
+        element = rdbLeavingPeriod.findElement(By.xpath("//*[@value='"+ leavingPeriod +"']"));
         elementType = RADIO;
         elementCaption = leavingPeriod;
         clickElement();
     }
 
-    public void clickOnLeavingCalendar(){
+    public CalendarPage clickOnLeavingCalendar(){
         element = imgLeavingDate;
         elementType = IMAGE;
         elementCaption = "Leaving Calendar";
         clickElement();
+        return initCalendarPage();
     }
 
     public CalendarPage clickOnCalculateButton(){
         element = buttonCalculate;
         elementType = BUTTON;
         elementCaption = "Calculate";
+        clickElement();
         return initCalendarPage();
     }
 }

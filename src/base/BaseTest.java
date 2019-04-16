@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.log4testng.Logger;
 import pages.CalendarPage;
 import pages.ParkingPage;
+import utils.TestData;
 
 import static base.Constants.BASE_URL;
 import static base.Constants.RESOURCES_PATH;
@@ -46,6 +47,7 @@ public class BaseTest {
         logger.info("Navigating to Base URL: " + BASE_URL);
         driver.navigate().to(BASE_URL);
         parkingPage = initParkingPage();
+        logger.info("====================================================");
     }
 
     @AfterClass
@@ -60,6 +62,15 @@ public class BaseTest {
         chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("test-type", "start-maximized", "no-default-browser-check");
         chromeOptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS,  true);
+    }
+
+    public void displayTestParameters(TestData testData){
+        logger.info("Entry Time: [" + testData.getEntryTime() + "]");
+        logger.info("Entry Date: [" + testData.getEntryDate() + "]");
+        logger.info("Entry Period: [" + testData.getEntryPeriod() + "]");
+        logger.info("Leaving Time: [" + testData.getLeavingTime() + "]");
+        logger.info("Leaving Date: [" + testData.getLeavingDate() + "]");
+        logger.info("Leaving Period: [" + testData.getLeavingPeriod() + "]");
     }
 
     //================================================================================
