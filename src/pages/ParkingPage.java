@@ -38,7 +38,7 @@ public class ParkingPage extends BasePage {
     @FindBy(name = "ExitTimeAMPM")
     private WebElement rdbLeavingPeriod;
 
-    @FindBy(xpath = "//input[@name='ExitDateDate']/following-sibling::a")
+    @FindBy(xpath = "//input[@name='ExitDate']/following-sibling::a")
     private WebElement imgLeavingDate;
 
     @FindBy(name = "Submit")
@@ -82,8 +82,7 @@ public class ParkingPage extends BasePage {
         elementType = IMAGE;
         elementCaption = "Entry Calendar";
         clickElement();
-        focusPopUp();
-        return initCalendarPage();
+        return initCalendarPage(driver);
     }
 
     public void fillLeavingTime(String leavingTime){
@@ -106,14 +105,13 @@ public class ParkingPage extends BasePage {
         elementType = IMAGE;
         elementCaption = "Leaving Calendar";
         clickElement();
-        return initCalendarPage();
+        return initCalendarPage(driver);
     }
 
-    public CalendarPage clickOnCalculateButton(){
+    public void clickOnCalculateButton(){
         element = buttonCalculate;
         elementType = BUTTON;
         elementCaption = "Calculate";
         clickElement();
-        return initCalendarPage();
     }
 }

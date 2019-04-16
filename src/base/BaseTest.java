@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.log4testng.Logger;
 import pages.CalendarPage;
 import pages.ParkingPage;
-import utils.TestData;
+import utilities.TestData;
 
 import static base.Constants.BASE_URL;
 import static base.Constants.RESOURCES_PATH;
@@ -47,7 +47,6 @@ public class BaseTest {
         logger.info("Navigating to Base URL: " + BASE_URL);
         driver.navigate().to(BASE_URL);
         parkingPage = initParkingPage();
-        logger.info("====================================================");
     }
 
     @AfterClass
@@ -64,7 +63,14 @@ public class BaseTest {
         chromeOptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS,  true);
     }
 
-    public void displayTestParameters(TestData testData){
+    protected void displayTestTitle(String title){
+        logger.info("====================================================");
+        logger.info("===== Starting: [" + title + "] ===== test");
+        logger.info("====================================================");
+    }
+
+    protected void displayTestParameters(String testTitle, TestData testData){
+        displayTestTitle(testTitle);
         logger.info("Entry Time: [" + testData.getEntryTime() + "]");
         logger.info("Entry Date: [" + testData.getEntryDate() + "]");
         logger.info("Entry Period: [" + testData.getEntryPeriod() + "]");
@@ -81,7 +87,7 @@ public class BaseTest {
         return PageFactory.initElements(driver, ParkingPage.class);
     }
 
-    protected CalendarPage initCalendarPage(){
-        return PageFactory.initElements(driver, CalendarPage.class);
+    protected CalendarPage initCalendarPage(WebDriver iDriver){
+        return PageFactory.initElements(iDriver, CalendarPage.class);
     }
 }

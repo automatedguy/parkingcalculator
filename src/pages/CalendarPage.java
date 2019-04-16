@@ -16,13 +16,14 @@ public class CalendarPage extends BasePage {
         super(iDriver);
     }
 
+    String winHandleBefore = null;
+
     //================================================================================
     // Locators
-    //================================================================================
+    //==============================================================================
 
-    @FindBy(name = "MonthSelector")
-    private WebElement ddlMonth;
-
+    String ddlMonthSelector = "MonthSelector";
+    String aSelectedDate = "//a[text()='_SELECTED_DATE_']";
 
     //================================================================================
     // Actions
@@ -30,7 +31,13 @@ public class CalendarPage extends BasePage {
 
 
     public void selectMonth(String selectedMonth){
-        element = ddlMonth;
+        winHandleBefore = driver.getWindowHandle();
+
+        for(String winHandle : driver.getWindowHandles()){
+            driver.switchTo().window(winHandle);
+        }
+
+        element = driver.findElement(By.name(ddlMonthSelector));
         elementType = SELECT;
         elementCaption = selectedMonth;
         selectedOption = selectedMonth;
@@ -41,6 +48,6 @@ public class CalendarPage extends BasePage {
     public void clickOnDate(String selectedDate){
         logger.info("Selecting date: [" + selectedDate + "]");
         driver.findElement(By.xpath("//a[text()='" + selectedDate +"']")).click();
-        focusParent();
+        driver.switchTo().window(winHandleBefore);
     }
 }
