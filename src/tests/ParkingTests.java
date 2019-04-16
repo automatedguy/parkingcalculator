@@ -31,7 +31,7 @@ public class ParkingTests extends BaseTest {
         assertThat(calculateCost(testData)).isEqualTo(getExpectedCost(42, 30));
     }
 
-    @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class, priority = 4)
+/*    @Test(dataProvider = "TestDataProvider", dataProviderClass = TestDataProvider.class, priority = 4)
     public void longTermSurfaceParking(TestData testData){
         displayTestParameters(LONG_TERM_SURFACE, testData);
         parkingPage.selectParkingLot(LONG_TERM_SURFACE);
@@ -43,5 +43,5 @@ public class ParkingTests extends BaseTest {
         displayTestParameters(ECONOMY, testData);
         parkingPage.selectParkingLot(ECONOMY);
         assertThat(calculateCost(testData)).isEqualTo(getExpectedCost(9, 9));
-    }
+    }*/
 }
